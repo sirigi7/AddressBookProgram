@@ -1,6 +1,6 @@
 package addressbook;
 
-public class Contact {
+public class UC1_Contact {
 
     private String firstName;
     private String lastName;
@@ -14,12 +14,12 @@ public class Contact {
     /* For Encapsulation, we took private instance variables.
      *Which we are going to use through getter and setter methods.
      */
-    public Contact() {
+    public UC1_Contact() {
 
     }
 
     //Declaration of parameterised constructor.
-    public Contact(String firstName, String lastName, String address, String city, String state, String zip, String phoneNumber, String emailId) {
+    public UC1_Contact(String firstName, String lastName, String address, String city, String state, String zip, String phoneNumber, String emailId) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
