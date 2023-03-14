@@ -1,6 +1,6 @@
 package addressbook;
 
-public class EditContact {
+public class UC3_EditContact {
     Scanner scanner = new Scanner(System.in);
     System.out.println("Enter the first name of the contact to edit :");
     String Name = scanner.next();
