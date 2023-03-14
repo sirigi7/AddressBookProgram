@@ -16,3 +16,4 @@ public class UC2_AddressBookMain {
         System.out.println(addressBook1.contact.getEmailId());
     }
 }
+
