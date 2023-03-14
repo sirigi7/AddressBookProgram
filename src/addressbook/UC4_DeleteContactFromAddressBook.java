@@ -1,6 +1,6 @@
 package addressbook;
 
-public class DeleteContactFromAddressBook {
+public class UC4_DeleteContactFromAddressBook {
     public void deleteContact() { //This method is to delete a contact by its first name.
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the first name of the contact to delete the contact :");
