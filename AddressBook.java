@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class AddressBook {
 
@@ -24,56 +21,62 @@ public class AddressBook {
                 int select = scanner.nextInt();
                 switch (select) {
                     case 1:  //Add contact to the list
-                        Contact contact = new Contact();
-                        Scanner scanner = new Scanner(System.in);
-                        System.out.println("Enter firstName: ");
-                        String firstName = scanner.next();
-                        System.out.println("Enter lastName: ");
-                        String lastName = scanner.next();
-                        System.out.println("Enter address: ");
-                        String address = scanner.next();
-                        System.out.println("Enter the city name: ");
-                        String city = scanner.next();
-                        System.out.println("Enter State name: ");
-                        String state = scanner.next();
-                        System.out.println("Enter zip code: ");
-                        String zip = scanner.next();
-                        System.out.println("Enter Phone number: ");
-                        String phoneNumber = scanner.next();
-                        System.out.println("Enter email id: ");
-                        String emailId = scanner.next();
-                        contact.setFirstName(firstName);
-                        contact.setLastName(lastName);
-                        contact.setAddress(address);
-                        contact.setCity(city);
-                        contact.setState(state);
-                        contact.setZip(zip);
-                        contact.setPhoneNumber(phoneNumber);
-                        contact.setEmailId(emailId);
-                        list.add(contact);
+                        System.out.println("Enter the first name of the contact to check whether it is already there in the addressBook :");
+                        String name = scanner.next();
+                        Optional<Contact> search = list.stream().filter(contact -> contact.getFirstName().equals(name)).findFirst();
+                        if (search.isPresent()) {
+                            System.out.println("The contact with the same name is already present in the AddressBook: ");
+                        } else {
+                            Contact contact = new Contact();
+                            System.out.println("Enter firstName: ");
+                            String firstName = scanner.next();
+                            System.out.println("Enter lastName: ");
+                            String lastName = scanner.next();
+                            System.out.println("Enter address: ");
+                            String address = scanner.next();
+                            System.out.println("Enter the city name: ");
+                            String city = scanner.next();
+                            System.out.println("Enter State name: ");
+                            String state = scanner.next();
+                            System.out.println("Enter zip code: ");
+                            String zip = scanner.next();
+                            System.out.println("Enter Phone number: ");
+                            String phoneNumber = scanner.next();
+                            System.out.println("Enter email id: ");
+                            String emailId = scanner.next();
+                            contact.setFirstName(firstName);
+                            contact.setLastName(lastName);
+                            contact.setAddress(address);
+                            contact.setCity(city);
+                            contact.setState(state);
+                            contact.setZip(zip);
+                            contact.setPhoneNumber(phoneNumber);
+                            contact.setEmailId(emailId);
+                            list.add(contact);
+                        }
                         break;
                     case 2: // edit contact from the list
                         System.out.println("Enter the first name of the contact to edit :");
                         Scanner scanner1 = new Scanner(System.in);
-                        String name = scanner1.next();
+                        name = scanner1.next();
                         for (Contact item : list) {
                             if (item.getFirstName().equalsIgnoreCase(name)) {
                                 System.out.println("Enter firstName: ");
-                                firstName = scanner1.next();
+                                String firstName = scanner1.next();
                                 System.out.println("Enter lastName: ");
-                                lastName = scanner1.next();
+                                String lastName = scanner1.next();
                                 System.out.println("Enter address: ");
-                                address = scanner1.next();
+                                String address = scanner1.next();
                                 System.out.println("Enter the city name: ");
-                                city = scanner1.next();
+                                String city = scanner1.next();
                                 System.out.println("Enter State name: ");
-                                state = scanner1.next();
+                                String state = scanner1.next();
                                 System.out.println("Enter zip code: ");
-                                zip = scanner1.next();
+                                String zip = scanner1.next();
                                 System.out.println("Enter Phone number: ");
-                                phoneNumber = scanner1.next();
+                                String phoneNumber = scanner1.next();
                                 System.out.println("Enter email id: ");
-                                emailId = scanner1.next();
+                                String emailId = scanner1.next();
                                 item.setFirstName(firstName);
                                 item.setLastName(lastName);
                                 item.setAddress(address);
@@ -105,35 +108,46 @@ public class AddressBook {
                         Scanner scanner4 = new Scanner(System.in);
                         int number = scanner4.nextInt();
                         for (int j = 1; j <= number; j++) {
-                            contact = new Contact();
-                            System.out.println("Enter firstName: ");
-                            firstName = scanner4.next();
-                            System.out.println("Enter lastName: ");
-                            lastName = scanner4.next();
-                            System.out.println("Enter address: ");
-                            address = scanner4.next();
-                            System.out.println("Enter the city name: ");
-                            city = scanner4.next();
-                            System.out.println("Enter State name: ");
-                            state = scanner4.next();
-                            System.out.println("Enter zip code: ");
-                            zip = scanner4.next();
-                            System.out.println("Enter Phone number: ");
-                            phoneNumber = scanner4.next();
-                            System.out.println("Enter email id: ");
-                            emailId = scanner4.next();
-                            contact.setFirstName(firstName);
-                            contact.setLastName(lastName);
-                            contact.setAddress(address);
-                            contact.setCity(city);
-                            contact.setState(state);
-                            contact.setZip(zip);
-                            contact.setPhoneNumber(phoneNumber);
-                            contact.setEmailId(emailId);
-                            list.add(contact);
+                            System.out.println("Enter the first name of the contact to check whether it is already there in the addressBook :");
+                            String searchName = scanner4.next();
+                            /*
+                            Using stream Api the search through the list for duplicate contacts.
+                             */
+                            search = list.stream().filter(contact -> contact.getFirstName().equals(searchName)).findFirst();
+                            if (search.isPresent()) {
+                                System.out.println("The contact with the same name is already present in the AddressBook: ");
+                            } else {
+                                Contact contact = new Contact();
+                                System.out.println("Enter firstName: ");
+                                String firstName = scanner4.next();
+                                System.out.println("Enter lastName: ");
+                                String lastName = scanner4.next();
+                                System.out.println("Enter address: ");
+                                String address = scanner4.next();
+                                System.out.println("Enter the city name: ");
+                                String city = scanner4.next();
+                                System.out.println("Enter State name: ");
+                                String state = scanner4.next();
+                                System.out.println("Enter zip code: ");
+                                String zip = scanner4.next();
+                                System.out.println("Enter Phone number: ");
+                                String phoneNumber = scanner4.next();
+                                System.out.println("Enter email id: ");
+                                String emailId = scanner4.next();
+                                contact.setFirstName(firstName);
+                                contact.setLastName(lastName);
+                                contact.setAddress(address);
+                                contact.setCity(city);
+                                contact.setState(state);
+                                contact.setZip(zip);
+                                contact.setPhoneNumber(phoneNumber);
+                                contact.setEmailId(emailId);
+                                list.add(contact);
+                            }
+
                         }
                         break;
-                    case 5:
+                    case 5:  // to show the items in side the List or in the addressbook
                         for (Contact items : list) {
                             System.out.println(items.toString());
                         }
@@ -155,4 +169,3 @@ public class AddressBook {
             System.out.println(key + " : " + value);
         }
     }
-}
